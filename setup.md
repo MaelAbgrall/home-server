@@ -10,6 +10,7 @@
 
 ## 2: Hardware
 - automatic mount of volumes (hard drives & deconz)
+- [checking the new drives](https://github.com/Spearfoot/disk-burnin-and-testing)
 
 ### Setting up mergerfs
 MergerFS will... merge multiple disks into one. It is a process easier and faster than using raid, or ZFS
