@@ -82,6 +82,10 @@ rm -r mergerfs_2.33.3.ubuntu-focal_amd64.deb
 
 ## 2: Hardware
 
+### Checking your drives (new install / new drives)
+
+- [checking the new drives](https://github.com/Spearfoot/disk-burnin-and-testing)
+
 ### Identify your hardware and mounting it
 The first step is to discover what is connected to the machine and what are the name of the hard drives
 ```bash
@@ -122,7 +126,13 @@ sudo mount -a
 lsblk --fs
 ```
 
-Now, my mergerFs is already setup, so here is the line for it, but I'll go later on how to set it up:
+### Setting up mergerfs
+MergerFS will... merge multiple disks into one. It is a process easier and faster than using raid, or ZFS
+- [link one, from PMV](https://perfectmediaserver.com/installation/manual-install.html)
+- [link two](https://forums.serverbuilds.net/t/setting-up-media-server-using-ubuntu-and-snapraid/239)
+- [link three](https://zackreed.me/mergerfs-another-good-option-to-pool-your-snapraid-disks/)
+
+Now, my mergerFs is already setup, so here is the line for it, but I'll later explain how to set it up:
 ```bash
 /mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,category.create=mfs,minfreespace=60G,fsname=mergerFS 0 0
 ```
@@ -141,14 +151,6 @@ sudo gpasswd -a $USER dialout
 
 That's it! Now the only thing left is to bring up the containers
 
-
-- [checking the new drives](https://github.com/Spearfoot/disk-burnin-and-testing)
-
-### Setting up mergerfs
-MergerFS will... merge multiple disks into one. It is a process easier and faster than using raid, or ZFS
-- [link one, from PMV](https://perfectmediaserver.com/installation/manual-install.html)
-- [link two](https://forums.serverbuilds.net/t/setting-up-media-server-using-ubuntu-and-snapraid/239)
-- [link three](https://zackreed.me/mergerfs-another-good-option-to-pool-your-snapraid-disks/)
-
 ## ?: Hardening
 - [env variables in docker compose](https://diogomonica.com/2017/03/27/why-you-shouldnt-use-env-variables-for-secret-data/)
+- SSH keys & blocking password access
