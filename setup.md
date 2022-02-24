@@ -77,7 +77,24 @@ apt list mergerfs
 rm -r mergerfs_2.33.3.ubuntu-focal_amd64.deb
 ```
 
+### nano
+While nano is usually present on linux, it doesn't have code highlights by default.
+I'm using a third party library for this, and it can be easily installed using this command:
+```bash
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+```
+All done!
 
+### htop
+Htop is a basic ressource monitor, but a little bit more fleshed out than top
+```bash
+sudo apt install htop
+```
+
+### (Optional) Fancontrol and lm-sensors
+On my previous home server, I used to have a very little and annoying fan running full speed. This utility and sensor suite allowed me to reduce the speed of the fan, and make it "smarter" using the cpu temperature.
+
+Most modern motherboard nowadays have integrated fan speed curves, so I'm not using it anymore, but just in case [here is a stackexchange post on how to install and configure this](https://askubuntu.com/a/46135/1551604)
 
 
 ## 2: Hardware
