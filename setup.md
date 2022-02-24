@@ -81,8 +81,8 @@ rm -r mergerfs_2.33.3.ubuntu-focal_amd64.deb
 
 
 ## 2: Hardware
-- automatic mount of volumes (hard drives & deconz)
 
+### Identify your hardware and mounting it
 The first step is to discover what is connected to the machine and what are the name of the hard drives
 ```bash
 lsblk
@@ -126,6 +126,22 @@ Now, my mergerFs is already setup, so here is the line for it, but I'll go later
 ```bash
 /mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,dropcacheonclose=true,category.create=mfs,minfreespace=60G,fsname=mergerFS 0 0
 ```
+
+
+### Setting up deConz
+deConz is the way I can interact with my zigbee network (lights, sensors, etc). To let docker interact with physical parts, I need to set up a few things prior to launching HA and the deconz container
+
+[from their website](https://phoscon.de/en/conbee/install#docker) and the [github repo](https://github.com/deconz-community/deconz-docker)
+
+```bash
+# this command add the user to the dialout group
+# this group allows access to serial devices
+sudo gpasswd -a $USER dialout
+```
+
+That's it! Now the only thing left is to bring up the containers
+
+
 - [checking the new drives](https://github.com/Spearfoot/disk-burnin-and-testing)
 
 ### Setting up mergerfs
